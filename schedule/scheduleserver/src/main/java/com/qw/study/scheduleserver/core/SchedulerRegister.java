@@ -1,7 +1,7 @@
 package com.qw.study.scheduleserver.core;
 
+import com.qw.study.scheduleserver.common.JobAction;
 import com.qw.study.scheduleserver.common.JobModule;
-import com.qw.study.scheduleserver.common.TaskAction;
 import com.qw.study.scheduleserver.core.taskstorage.ITaskStorage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,7 +29,11 @@ public class SchedulerRegister {
         try {
             JobModule jobModule = taskStorage.queryOne(taskName);
             Trigger trigger = taskGenerater.generateTrigger(jobModule.getTaskName());
-            TaskAction task = new TaskAction(taskName);
+            JobAction task = new JobAction.ActionBuilder()
+                                    .setClientIp(jobModule.getHostIp())
+                                    .setTaskName(jobModule.getTaskName())
+                                    .setUrl("eschdule-client/start")
+                                    .build();
             taskGenerater.generateTask(task, trigger);
         } catch (Exception e) {
             LOGGER.error("注册定时任务-{}-失败", taskName, e);

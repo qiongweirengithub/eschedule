@@ -21,6 +21,7 @@ import java.util.List;
  * @date 18-7-12
  */
 @Controller
+@RequestMapping(value = "eschdule-server")
 public class ManagementController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ManagementController.class);

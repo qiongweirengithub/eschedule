@@ -1,5 +1,6 @@
 package com.qw.study.scheduleclient.api;
 
+import java.lang.annotation.Annotation;
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -31,4 +32,5 @@ public @interface EScheduleTask {
      * @return group
      */
     String cron() default "1 1 1 1 1 *";
+
 }
