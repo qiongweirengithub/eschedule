@@ -44,7 +44,7 @@ public class ScheduleConfig implements SchedulingConfigurer{
 
                 //任务触发，可修改任务的执行周期.
 
-                CronTrigger trigger1 = new CronTrigger("");
+                CronTrigger trigger1 = new CronTrigger("0/5 * * * * *");
 
                 Date nextExec = trigger1.nextExecutionTime(triggerContext);
 
